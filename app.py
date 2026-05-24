@@ -16,7 +16,7 @@ def init_connection():
     try:
         client = MongoClient(os.getenv("MONGO_URI"), serverSelectionTimeoutMS=5000)
         client.admin.command('ping') # Validar conexión
-        return client.dominos_db.pedidos # Base de datos: dominos_db, Colección: pedidos
+        return client["s11-dominos"]["dominos"] # Base de datos: dominos_db, Colección: pedidos
     except Exception as e:
         st.error(f"Error conectando a Atlas: Revise su MONGO_URI. Detalle: {e}")
         return None
